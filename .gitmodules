@@ -7,3 +7,6 @@
 [submodule "phpwind/lib"]
 	path = phpwind/lib
 	url = git@github.com:webim/webim-php.git
+[submodule "uchome/lib"]
+	path = uchome/lib
+	url = git@github.com:webim/webim-php.git
