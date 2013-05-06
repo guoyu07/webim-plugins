@@ -13,18 +13,8 @@ class WebimHooks extends Hooks
     }
 
 	public function set(){
-		require $this->path.'/webim/config.php';
-		$handle  = opendir($this->path.'/webim/static/themes');
-        
-        while($f = readdir($handle)){
-         if($f =='.' || $f =='..') continue;
-            $path =  $this->path .'/webim/static/themes'.'/'.$f;  //如果只要子目录名, path = $f;
-            if(is_dir($path)) {
-                    $subdirs[] = $f;
-            }
-        } 
+		require SITE_PATH. '/addons/plugin/Webim/webim/config.php';
 		$this->assign($_IMC);
-		$this->assign('data',$subdirs);
 		$this->display('set');
 	}
 
@@ -45,9 +35,8 @@ class WebimHooks extends Hooks
 			$this->error('你有必要的项目没有填写');
 			
 	
-	
 	  }else{
-		  $file = fopen($this->path. '/webim/config.php',"wb");
+		  $file = fopen(SITE_PATH. '/addons/plugin/Webim/webim/config.php', "wb");
 
          $data=<<<EOT
  <?php
@@ -70,8 +59,6 @@ webimeot=array(
 			'disable_menu'=>false,
 			'enable_login'=>false,
 			'host_from_domain'=>false,
-			'admin_uid'=>'$admin_uid',
-			'admin_groupname'=>'$admin_groupname',
 );
 EOT;
             $data = str_replace('webimeot','$_IMC',$data);
@@ -83,11 +70,35 @@ EOT;
 		}
 	}
 
+    public function scan_dir( $dir ) {
+        $d = dir( $dir."/" );
+        $dn = array();
+        while ( false !== ( $f = $d->read() ) ) {
+            if(is_dir($dir."/".$f) && $f!='.' && $f!='..') $dn[]=$f;
+        }
+        $d->close();
+        return $dn;
+    }
+
 	public function skin() {
+		require SITE_PATH. '/addons/plugin/Webim/webim/config.php';
+        $path = SITE_PATH. '/addons/plugin/Webim/webim/static/themes';
+        $files = scan_dir($path);
+        $themes = array();
+        foreach ($files as $k => $v){
+            $t_path = $path.'/'.$v;
+            if(is_dir($t_path) && is_file($t_path."/jquery.ui.theme.css")) {
+                $cur = $v == $_IMC['theme'] ? " class='current'" : "";
+                $url = '#'; #TODO: FIXME
+                $themes[] = "<li$cur><h4><a href='$url'>$v</a></h4><p><a href='$url'><img width=100 height=134 src='$path/images/$v.png' alt='$v' title='$v'/></a></p></li>";
+            }
+        }
+		#$this->assign('path', $path);
+		$this->assign('themes', $themes);
 	    $this->display('skin');
 	}
 
-	public function skin() {
+	public function history() {
 	    $this->display('history');
 	}
 
