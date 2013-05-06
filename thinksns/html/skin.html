@@ -1,0 +1,27 @@
+<include file="../Public/_header" />
+<div class="so_main">
+<style>
+.tb {
+clear: both;
+width: 100%;
+margin-top: 8px;
+}
+td {
+padding: 5px 5px 3px 0;
+border-top: 1px dotted #DEEFFB;
+}
+</style>
+    <div class="page_tit">皮肤选择</div>
+    <table class="tb tb2 "><tbody><tr><td width="33%" style="background: #F2F9FD"><table cellspacing="0" cellpadding="0" style="margin-left: 10px; width: 200px;"><tbody><tr><td style="width: 120px; text-align: center; border-top: none;"><p style="margin-bottom: 2px;">&nbsp;</p><img style="cursor:pointer" title="点击图片放大" onclick="zoom(this, './template/default/preview_large.jpg', 1)" src="./template/default/preview.jpg" alt="预览">
+				<p style="margin: 2px 0"><input type="text" class="txt" name="namenew[1]" value="默认风格" size="30" style="margin-right:0; width: 80px;"></p>
+				<p class="lightfont">(默认模板套系)</p></td><td style="padding-top: 17px; width: 80px; border-top: none; vertical-align: top;">
+				<p style="margin: 2px 0"><label>默认 <input type="radio" class="radio" name="defaultnew" value="1" checked=""></label></p>
+				<p style="margin: 2px 0"><label>卸载 <input class="checkbox" type="checkbox" disabled="disabled"></label></p>
+				<p style="margin: 8px 0 2px"><a href="admin.php?action=styles&amp;operation=edit&amp;id=1">编辑</a></p>
+				<p style="margin: 2px 0"><a href="admin.php?action=styles&amp;operation=export&amp;id=1">导出</a></p>
+				<p style="margin: 2px 0"><a href="admin.php?action=styles&amp;operation=copy&amp;id=1">复制</a></p>
+				<p style="margin: 2px 0"><a href="admin.php?action=styles&amp;operation=import&amp;dir=yes&amp;restore=1">恢复</a></p></td></tr></tbody></table></td>
+<td></td><td></td></tr></tbody></table>
+   </div>
+</div>
+<include file="../Public/_footer" />
