@@ -1,4 +1,10 @@
 <?php
+/**
+ * WebIM插件
+ * @author ery.lee@gmail.com
+ * @version 2.0
+ * @copyright www.webim20.cn
+ */
 class WebimAddons extends NormalAddons
 {
 	protected $version = '2.0';
@@ -24,9 +30,9 @@ class WebimAddons extends NormalAddons
     }
 
     public function adminMenu() {
-        $menu = array('set' => '设置',
+        $menu = array('config' => '设置',
                       'skin' => '主题',
-                      'history' => '历史纪录',);
+                      'history' => '清除历史',);
         return $menu;
     }
 
@@ -34,48 +40,53 @@ class WebimAddons extends NormalAddons
         return true;
     }
 
+	/**
+	 * 安裝插件，初始化WebIM數據庫表
+	 */
 	public function install() {     
 		$db_prefix = C('DB_PREFIX');
-		$sql = "CREATE TABLE ".$db_prefix."webim_histories (
-	`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-	`send` tinyint(1) DEFAULT NULL,
-	`type` varchar(20) DEFAULT NULL,
-	`to` varchar(20) DEFAULT NULL,
-	`from` varchar(20) DEFAULT NULL,
-	`nick` varchar(20) DEFAULT NULL COMMENT 'from nick',
-	`body` text,
-	`style` varchar(150) DEFAULT NULL,
-	`timestamp` double DEFAULT NULL,
-	`todel` tinyint(1) NOT NULL DEFAULT '0',
-	`fromdel` tinyint(1) NOT NULL DEFAULT '0',
-	`created_at` date DEFAULT NULL,
-	`updated_at` date DEFAULT NULL,
-	PRIMARY KEY (`id`),
-	KEY `todel` (`todel`),
-	KEY `fromdel` (`fromdel`),
-	KEY `timestamp` (`timestamp`),
-	KEY `to` (`to`),
-	KEY `from` (`from`),
-	KEY `send` (`send`)
-) ENGINE=MyISAM;
-CREATE TABLE ".$db_prefix."webim_settings (
-	`id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
-	`uid` mediumint(8) unsigned NOT NULL,
-	`web` blob,
-	`air` blob,
-	`created_at` date DEFAULT NULL,
-	`updated_at` date DEFAULT NULL,
-	PRIMARY KEY (`id`) 
-) ENGINE=MyISAM";
+		$sql = "CREATE TABLE IF NOT EXISTS `{$db_prefix}webim_histories` (
+					`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+					`send` tinyint(1) DEFAULT NULL,
+					`type` varchar(20) DEFAULT NULL,
+					`to` varchar(20) DEFAULT NULL,
+					`from` varchar(20) DEFAULT NULL,
+					`nick` varchar(20) DEFAULT NULL COMMENT 'from nick',
+					`body` text,
+					`style` varchar(150) DEFAULT NULL,
+					`timestamp` double DEFAULT NULL,
+					`todel` tinyint(1) NOT NULL DEFAULT '0',
+					`fromdel` tinyint(1) NOT NULL DEFAULT '0',
+					`created_at` date DEFAULT NULL,
+					`updated_at` date DEFAULT NULL,
+					PRIMARY KEY (`id`),
+					KEY `todel` (`todel`),
+					KEY `fromdel` (`fromdel`),
+					KEY `timestamp` (`timestamp`),
+					KEY `to` (`to`),
+					KEY `from` (`from`),
+					KEY `send` (`send`)
+				) ENGINE=MyISAM;
+				CREATE TABLE IF NOT EXISTS `{$db_prefix}webim_settings` (
+					`id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+					`uid` mediumint(8) unsigned NOT NULL,
+					`web` blob,
+					`air` blob,
+					`created_at` date DEFAULT NULL,
+					`updated_at` date DEFAULT NULL,
+					PRIMARY KEY (`id`) 
+				) ENGINE=MyISAM;";
 
-		return M('')->execute($sql) !== false;
-		
+		D()->execute($sql);
+		return true;
 	}
 
 	public function uninstall() {
 		$db_prefix = C('DB_PREFIX');
-		$sql = "DROP TABLE IF EXISTS `{$db_prefix}webim_histories`;DROP TABLE IF EXISTS `{$db_prefix}webim_settings`;";
-		return M('')->execute($sql);
+		$sql = "DROP TABLE IF EXISTS `{$db_prefix}webim_histories`;
+				DROP TABLE IF EXISTS `{$db_prefix}webim_settings;`;";
+		D()->execute($sql);
+		return true;
 	}
 
 }
