@@ -1,7 +1,7 @@
 //custom
 (function(webim){
 	var path = _IMC.path;
-	webim.extend( webim.setting.defaults.data, _IMC.setting );
+	webim.extend(webim.setting.defaults.data, _IMC.setting );
 	var webim = window.webim;
 	webim.defaults.urls = {
 		online:path + "im.php?webim_action=online",
@@ -30,7 +30,7 @@
 		lib: path + "static/assets/sound.swf",
 		msg: path + "static/assets/sound/msg.mp3"
 	};
-	var ui = window.webimUI = new webim.ui(document.body, {
+	var ui = new webim.ui(document.body, {
 		imOptions: {
 			jsonp: _IMC.jsonp
 		},
@@ -45,11 +45,10 @@
 		is_login: _IMC['is_login'],
 		loginOptions: _IMC['login_options']
 	} );
-	
+	ui.addApp("room");
 	ui.addApp("notification");
 	ui.addApp("setting", {"data": webim.setting.defaults.data});
-	if( !_IMC.disable_chatlink )ui.addApp("chatlink", {
-		off_link_class: /r_option|spacelink/i
+	//if( !_IMC.disable_chatlink )ui.addApp("chatlink", { off_link_class: /r_option|spacelink/i
 	});
 	ui.render();
 	_IMC['is_login'] && im.autoOnline() && im.online();

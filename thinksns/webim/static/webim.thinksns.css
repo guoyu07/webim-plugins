@@ -5,8 +5,8 @@
  * Copyright (c) 2010 Hidden
  * Released under the MIT, BSD, and GPL Licenses.
  *
- * Date: Fri Dec 24 16:32:20 2010 +0800
- * Commit: ee5c2661578245f8e273838c2f97116f77f5935a
+ * Date: Fri Mar 29 11:47:40 2013 +0800
+ * Commit: 036ad61d64c357f57f3ddba0fce06f56d629e9d1
  */
 
 body {
@@ -37,9 +37,11 @@ body {
 }
 .webim h4{
         font-size: 1em;
+	line-height: 1.5;
 }
 .webim h5{
         font-size: .83em;
+	line-height: 1.5;
 }
 .webim-gray{
         /*
@@ -1129,6 +1131,15 @@ a .webim-icon, a .ui-icon{
         overflow: hidden;
         padding:.1em 0;
 }
-.spacemenu_list .webim-chatlink{
-	padding-left: 1.75em;
+/*ThinkSNS V3*/
+#XXXXX .webim-chatlink{
+	padding-left: 0;
+	background-position: -30px 0;
 }
+
+/*discuz X1.5*/
+#XXXX .ul_list .webim-chatlink{
+	background-position: 0px center;
+	padding-left: 20px;
+}
+
