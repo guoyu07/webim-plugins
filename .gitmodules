@@ -16,3 +16,6 @@
 [submodule "thinksns"]
 	path = thinksns
 	url = git://github.com/webim/webim-plugin-thinksns.git
+[submodule "jishigou"]
+	path = jishigou
+	url = git://github.com/webim/webim-plugin-jishigou.git
