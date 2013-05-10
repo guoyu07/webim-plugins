@@ -1,6 +1,3 @@
-[submodule "discuzx/lib"]
-	path = discuzx/lib
-	url = git@github.com:webim/webim-php.git
 [submodule "discuz/lib"]
 	path = discuz/lib
 	url = git@github.com:webim/webim-php.git
