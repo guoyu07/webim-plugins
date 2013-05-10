@@ -16,3 +16,6 @@
 [submodule "jishigou"]
 	path = jishigou
 	url = git://github.com/webim/webim-plugin-jishigou.git
+[submodule "discuzx"]
+	path = discuzx
+	url = git@github.com:webim/webim-plugin-discuzx.git
