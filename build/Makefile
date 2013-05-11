@@ -1,4 +1,4 @@
-all: thinksns jishigou discuzx discuz
+all: thinksns jishigou phpwind discuzx discuz
 
 thinksns:
 	@@echo "Build webim for ThinkSNS..."
@@ -8,6 +8,10 @@ jishigou:
 	@@echo "Build webim for JishiGou..."
 	@@$(MAKE) -f jishigou.mk
 
+phpwind:
+	@@echo "Build webim for PhpWind..."
+	@@$(MAKE) -f phpwind.mk
+
 discuzx:
 	@@echo "Build webim for DiscuzX..."
 	@@$(MAKE) -f discuzx.mk
@@ -16,7 +20,7 @@ discuz:
 	@@echo "Build webim for Discuz..."
 	@@$(MAKE) -f discuz.mk
 
-clean: clean_thinksns clean_jishigou clean_discuzx clean_discuz
+clean: clean_thinksns clean_jishigou clean_phpwind clean_discuzx clean_discuz
 
 clean_thinksns:
 	@@echo "Clean ThinkSNS"
@@ -25,6 +29,10 @@ clean_thinksns:
 clean_jishigou:
 	@@echo "Clean JishiGou"
 	@@$(MAKE) clean -f jishigou.mk
+
+clean_phpwind:
+	@@echo "Clean PhpWind"
+	@@$(MAKE) clean -f phpwind.mk
 
 clean_discuzx:
 	@@echo "Clean DiscuzX"
