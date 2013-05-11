@@ -1,6 +1,3 @@
-[submodule "uchome/lib"]
-	path = uchome/lib
-	url = git@github.com:webim/webim-php.git
 [submodule "wordpress/lib"]
 	path = wordpress/lib
 	url = git@github.com:webim/webim-php.git
