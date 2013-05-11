@@ -8,7 +8,7 @@ all:
 	@@mkdir -p ${PRODUCT_DIR}
 	@@cp -r ../discuzx ${PRODUCT_DIR}/webim
 	@@cd ${PRODUCT_DIR} && tar czvf webim-for-discuzx-${DATE}.tgz webim
-	@@cd ${PRODUCT_DIR} && rm -rf Webim
+	@@cd ${PRODUCT_DIR} && rm -rf webim
 
 clean:
 	@@echo "Removing product directory:" ${PRODUCT_DIR}
