@@ -16,3 +16,9 @@
 [submodule "phpwind"]
 	path = phpwind
 	url = git@github.com:webim/webim-plugin-phpwind.git
+[submodule "uchome"]
+	path = uchome
+	url = git@github.com:webim/webim-plugin-uchome.git
+[submodule "phpwind9"]
+	path = phpwind9
+	url = git@github.com:webim/webim-plugin-phpwind9.git
