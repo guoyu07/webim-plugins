@@ -22,3 +22,6 @@
 [submodule "phpwind9"]
 	path = phpwind9
 	url = git@github.com:webim/webim-plugin-phpwind9.git
+[submodule "discuzx3"]
+	path = discuzx3
+	url = git@github.com:webim/webim-for-discuzX.git
